@@ -1,47 +1,92 @@
 :root{
     --background-col: rgb(255, 252, 248);
     --font-col : rgba(0, 0, 0, 0.758);
+    --alt-background-col: rgba(250, 235, 215, 0.5);
 }
-
 html {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     background: var(--background-col);
-}
-body *{
-    border-radius: .5rem;
+    color: var(--font-col);
+    font-size: clamp(.75rem, 1.125vw, 1.5rem);
 }
 body{
     box-sizing: border-box;
     margin: 0 auto;
-    padding: 0 .5rem;
-    color: var(--font-col);
 }
-main{
-    display: flex;
-    flex-direction: column;
+body *{
+    border-radius: .5rem;
 }
-img{
-    width: fit-content;
-    margin: .5rem 1rem;
-    
-}
-#head{
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
+section{
+    margin: .5rem;
+    padding: .75rem;
 }
 #summary-section{
-    align-content: center;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas: 
+    "h1 pic"
+    "h2 pic"
+    "l  pic"
+    "p  p";
 }
-p, li{
-    line-height: 1.5;
-    columns: 2;
-    padding: .5rem;
+#summary-h1{
+    grid-area: h1;
 }
-li{
-    padding: .5rem;
+#summary-h2{
+    grid-area: h2;
+}
+#summary-link{
+    text-decoration: none;
+    grid-area: l;
+}
+#summary-link:hover{
+    text-decoration: underline;
+    opacity: 25%;
+}
+#summary-pic{
+    grid-area: pic;
+    background-color: var(--alt-background-col);
+    box-shadow: 0 .25rem .15rem black;
 }
 figcaption{
+    width: 80%;
+    justify-self: center;
+    text-align: center;
     font-style: italic;
     font-size: small;
+}
+#summary-p{
+
+    line-height: 1.5;
+    grid-area: p;
+    width: 70%;
+}
+li{
+    font-size: clamp(.75rem, 1vw, 1rem);
+    line-height: 1.5;
+    padding: .5rem;
+}
+
+/* portrait mobile*/
+@media (width <= 768px) {
+    html {
+        font-size: clamp(1rem, 3vw, 2rem);
+    }
+    li{
+        font-size: clamp(1rem, 3vw, 1.5rem);
+        line-height: 1.5;
+        padding: .5rem;
+    }
+    }
+
+/* Landscape mobile*/
+@media ( 768px <= width <= 1000px) {
+    html {
+        font-size: clamp(1rem, 2vw, 1.5rem);
+    }
+    li{
+        font-size: clamp(.5rem, 2vw, 1rem);
+        line-height: 1.5;
+        padding: .5rem;
+    }
 }
